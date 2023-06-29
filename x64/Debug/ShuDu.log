@@ -1,5 +1,5 @@
 ﻿  Finale.cpp
-  Operation.cpp
   main.cpp
+D:\Visual Studio 2022\source\repos\ShuDu\ShuDu\ShuDu\Operation.h(42,29): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
   正在生成代码...
   ShuDu.vcxproj -> D:\Visual Studio 2022\source\repos\ShuDu\ShuDu\x64\Debug\ShuDu.exe

@@ -32,8 +32,5 @@
     <ClCompile Include="Finale.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Operation.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

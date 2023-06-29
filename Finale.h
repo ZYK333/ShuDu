@@ -13,7 +13,6 @@ public:
 private:
 	int num, count;
 	int table[9][9];
-	int temp[9][9];
 	void record();
 	void rowExchange(const int& r1, const int& r2);
 	void colExchange(const int& c1, const int& c2);

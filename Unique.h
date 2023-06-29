@@ -1,11 +1,12 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<math.h>
-#include<windows.h>
-#include<iostream>
-#include<fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <windows.h>
+#include <iostream>
+#include <fstream>
 using namespace std;
+
 int sudo[9][9], total, flag;
 static char result[163];
 

@@ -1,28 +1,23 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
 #include "Finale.h"
-#include "Operation.h"
 
 static char str[163000001];	// (18 * 9 + 1)*1000000+1
 static int index = 0;
+int temp[9][9] = { {9,7,8,3,1,2,6,4,5},
+	               {3,1,2,6,4,5,9,7,8},
+				   {6,4,5,9,7,8,3,1,2},
+				   {7,8,9,1,2,3,4,5,6},
+				   {1,2,3,4,5,6,7,8,9},
+				   {4,5,6,7,8,9,1,2,3},
+				   {8,9,7,2,3,1,5,6,4},
+				   {2,3,1,5,6,4,8,9,7},
+				   {5,6,4,8,9,7,2,3,1} };
 
 void FianlMaker::make(int n) {
 	num = n;
 	count = 0;
 	int a[9] = { 1,2,3,4,5,6,7,8,9 };
 	while (1) {
-		table[0][4] = table[1][1] = table[2][7] = table[3][3] = table[4][0] = table[5][6] = table[6][5] = table[7][2] = table[8][8] = a[0];
-		table[0][5] = table[1][2] = table[2][8] = table[3][4] = table[4][1] = table[5][7] = table[6][3] = table[7][0] = table[8][6] = a[1];
-		table[0][3] = table[1][0] = table[2][6] = table[3][5] = table[4][2] = table[5][8] = table[6][4] = table[7][1] = table[8][7] = a[2];
-		table[0][7] = table[1][4] = table[2][1] = table[3][6] = table[4][3] = table[5][0] = table[6][8] = table[7][5] = table[8][2] = a[3];
-		table[0][8] = table[1][5] = table[2][2] = table[3][7] = table[4][4] = table[5][1] = table[6][6] = table[7][3] = table[8][0] = a[4];
-		table[0][6] = table[1][3] = table[2][0] = table[3][8] = table[4][5] = table[5][2] = table[6][7] = table[7][4] = table[8][1] = a[5];
-		table[0][1] = table[1][7] = table[2][4] = table[3][0] = table[4][6] = table[5][3] = table[6][2] = table[7][8] = table[8][5] = a[6];
-		table[0][2] = table[1][8] = table[2][5] = table[3][1] = table[4][7] = table[5][4] = table[6][0] = table[7][6] = table[8][3] = a[7];
-		table[0][0] = table[1][6] = table[2][3] = table[3][2] = table[4][8] = table[5][5] = table[6][1] = table[7][7] = table[8][4] = 9;
-		memcpy(temp, table, sizeof(table));
+		memcpy(table, temp, sizeof(temp));
 		for (int c1 = 0; c1 < 2; c1++)
 			for (int c2 = 0; c2 < 6; c2++)
 				for (int c3 = 0; c3 < 6; c3++)
