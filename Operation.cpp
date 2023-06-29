@@ -126,6 +126,93 @@ void InputHandler::check(int argc, char** argv) {
 				cout << "已成功解出数独游戏" << endl;
 			fclose(out);
 		}
+		else if (argc == 5)//生成有难度等级要求 && 限定挖空范围的数独游戏
+	{
+		string parameter1 = argv[1];
+		string parameter2 = argv[2];
+		string parameter3 = argv[3];//新增参数  -m -r
+		string parameter4 = argv[4];//新增参数  难度等级
+		//新增：挖空→生成数独游戏
+		if (parameter1 == "-n")
+		{
+			int n = isNum(parameter2);
+			int flag = 0;
+			if (n <= 0 || n > 1000000)
+			{
+				cout << "不满足0<n<=1000000！" << endl;
+				return;
+			}
+			else {
+				ifstream in("finale.txt");
+				if (!in.is_open()) {
+					cout << "finale.txt 无法打开！" << endl;
+					return;
+				}
+				if (parameter3 == "-m")//如果写了等级
+				{
+					int m = isNum(parameter4);//再判断第四个参数，即1、2、3
+					if (m < 1 || m > 3)
+					{
+						cout << "不满足1=<m<=3！" << endl;
+						return;
+					}
+
+					Rand1(m * 10);//生成随机数成功
+					char ch[81] = { '0' };
+					char c;
+					int count = -1;
+					//SudokuSolver ss;
+					ofstream out("game.txt", ios::trunc);
+					while (in.get(c)) {	//in >> c 会忽略空白回车符
+						if (isdigit(c))
+							count++;
+						else
+							continue;
+						for (int i = 0; i < m * 10; i++)
+						{
+							if (count == a[i])
+							{
+								ch[count] = '$';
+								break;
+							}
+							ch[count] = c;
+						}
+						//cout << count << ":" << ch[count] << endl;
+						out << ch[count] << " ";
+						if ((count + 1) % 9 == 0)
+						{
+							out << endl;
+						}
+						if (count == 80)
+						{
+							//cout << "--------------------------------------" << endl;
+							count = -1;
+							out << endl;
+							flag++;
+						}
+						if (flag == n)
+							break;
+					}
+
+					in.close();
+					if (count != -1) {
+						const char* str = "存在错误格式！";
+						//fputs(str, out);
+						out << str << endl;
+						cout << str << endl;
+					}
+					else
+						cout << "已生成" << parameter2 << "个数独游戏" << endl;
+					out.close();
+				}
+			}
+		}
+	}
+	else {
+		cout << "输入有误！" << endl;
+	}
+	return;
+}
 	
 
 	else {
