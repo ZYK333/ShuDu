@@ -92,7 +92,40 @@ void InputHandler::check(int argc, char** argv) {
 			}
 		}
 		//结束
-		
+		//解数独游戏
+		else if (parameter1 == "-s") {
+			ifstream in(parameter2);
+			if (!in.is_open()) {
+				cout << parameter2 + "无法打开！" << endl;//parameter2 = game.txt
+				return;
+			}
+			char ch[81];
+			char c;
+			int count = 0;
+			//udokuSolver ss;
+			FILE* out = fopen("solver.txt", "wt");
+			while (in.get(c)) {	//in >> c 会忽略空白回车符
+				if (isdigit(c) || c == '$') {
+					if (c == '$')
+						c = '0';
+					ch[count++] = c;
+				}
+				if (count == 81) {
+					count = 0;
+					//fputs(ss.solve(ch), out);
+					fputs(solution(ch), out);//修改求解数独函数
+				}
+			}
+			in.close();
+			if (count != 0) {
+				const char* str = "存在错误格式！";
+				fputs(str, out);
+				cout << str << endl;
+			}
+			else
+				cout << "已成功解出数独游戏" << endl;
+			fclose(out);
+		}
 	
 
 	else {
