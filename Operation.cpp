@@ -205,6 +205,73 @@ void InputHandler::check(int argc, char** argv) {
 						cout << "已生成" << parameter2 << "个数独游戏" << endl;
 					out.close();
 				}
+				else if (parameter3 == "-r")//生成游戏中挖空的数量范围  ShuDu.exe -n 10 -r 20~55
+				{
+					//int m = isNum(parameter4);//再判断第四个参数，即1、2、3
+					int log = 0;
+					string s1, s2;
+					for (int i = 0; i < parameter4.length(); i++)
+					{
+						if (parameter4[i] == '~')
+							log = i;
+					}
+					for (int i = 0; i < log; i++)
+						s1 += parameter4[i];
+					for (int i = log + 1; i < parameter4.length(); i++)
+						s2 += parameter4[i];
+					int m1 = isNum(s1);
+					int m2 = isNum(s2);
+					if (m1 < 20 || m2>55)
+					{
+						cout << "输入的范围不合法！" << endl;
+						return;
+					}
+					Rand2(m1, m2);//生成随机数成功
+					char ch[81] = { '0' };
+					char c;
+					int count = -1;
+					//SudokuSolver ss;
+					ofstream out("game.txt", ios::trunc);
+					while (in.get(c)) {	//in >> c 会忽略空白回车符
+						if (isdigit(c))
+							count++;
+						else
+							continue;
+						for (int i = 0; i < randnum2; i++)
+						{
+							if (count == a[i])
+							{
+								ch[count] = '$';
+								break;
+							}
+							ch[count] = c;
+						}
+						//cout << count << ":" << ch[count] << endl;
+						out << ch[count] << " ";
+						if ((count + 1) % 9 == 0)
+						{
+							out << endl;
+						}
+						if (count == 80)
+						{
+							//cout << "--------------------------------------" << endl;
+							count = -1;
+							out << endl;
+							//fputs(ch, out);
+						}
+					}
+
+					in.close();
+					if (count != -1) {
+						const char* str = "存在错误格式！";
+						//fputs(str, out);
+						out << str << endl;
+						cout << str << endl;
+					}
+					else
+						cout << "已生成" << parameter2 << "个数独游戏" << endl;
+					out.close();
+				}
 			}
 		}
 	}
