@@ -1,0 +1,59 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.32.31329.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///d:/visual studio 2022/source/repos/shudu/shudu/shudu/main.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "4a8e34fbbb14f69e4c5e1976847d87a9b44085010c6ac47638d2dc8138db637f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/visual studio 2022/source/repos/shudu/shudu/shudu/operation.h"
+          },
+          "hashes": {
+            "sha-256": "327a97f9161eed9f31f67261394ad6d8f9ac511ec1f791015ba743ce622fdbeb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/visual studio 2022/source/repos/shudu/shudu/shudu/finale.h"
+          },
+          "hashes": {
+            "sha-256": "850997b3509c9c781c114e259d89f79e81957b938138321233ec337413b884e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///d:/visual studio 2022/source/repos/shudu/shudu/shudu/unique.h"
+          },
+          "hashes": {
+            "sha-256": "9e7d32b068294c88f653cc2ee2a4eb76e418c79b76430b01090782d26e2ae523"
+          }
+        }
+      ]
+    }
+  ]
+}

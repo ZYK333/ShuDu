@@ -39,7 +39,7 @@ void Rand2(int RandMin, int RandMax)
 	//毫秒级随机种子
 	struct timeb timeSeed;
 	ftime(&timeSeed);
-	srand(timeSeed.time * 1000 + timeSeed.millitm);  // milli time
+	srand((unsigned)(timeSeed.time * 1000 + timeSeed.millitm));  // milli time
 	unsigned int range = RandMax - RandMin + 1;
 	randnum2 = rand() % range + RandMin;
 	Rand1(randnum2);

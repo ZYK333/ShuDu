@@ -1,0 +1,2 @@
+D:\Visual Studio 2022\source\repos\ShuDu\ShuDu\x64\Debug\ShuDu.exe.lastcodeanalysissucceeded
+D:\Visual Studio 2022\source\repos\ShuDu\ShuDu\ShuDu\x64\Debug\NativeCodeAnalysis.read.1.tlog
